@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="icon" href="data:;base64,=">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../dist/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../dist/easyui/themes/icon.css">
+    <script type="text/javascript" src="../dist/easyui/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="../dist/easyui/jquery.easyui.min.js">
+    </script>
+    <style>
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(65, 62, 62, 0.8);
+            z-index: 99;
+        }
+        #loading font {
+            display: block;
+            width: 200px;
+            height: 30px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- loading... 效果 -->
+    <div id='loading'>
+        <div style="width: 15px;height: 15px;margin: 200px auto;">
+            <!-- <image src='../img/loading.gif'/> -->
+            <font color="#fff" size="4">页面正在加载中···</font>
+        </div>
+    </div>
+    <a href="#" class="easyui-linkbutton" onclick="progress()">Progress</a>
+    <script>
+
+        function closes(dom) {
+            dom.fadeOut("normal", function() {
+                $(this).remove();
+                // alert("数据加载完成");
+            });
+        }
+        var loading;
+        $.parser.onComplete = function () {
+            if (loading) {
+                clearTimeout(loading);
+            }
+            loading = setTimeout(closes($("#loading")), 1000);
+        }
+
+        // 自动生成一个div：.messager-window
+            // 里面有两个div 分别是 window-mask 和 window-shadow
+            // 主要要调整的样式是 messager-window 的，下面的属性也是它的
+        function progress(){
+            var win = $.messager.progress({
+                title:'Please waiting',
+                msg:'Loading data...',
+                text:'努力中...',
+　　　　　　　   interval:'100'
+            });
+
+            setTimeout(function(){
+                $.messager.progress('close');
+            },5000)
+        }
+    </script>
+</body>
+</html>
