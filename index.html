@@ -30,26 +30,22 @@
 <body>
         <!-- loading... 效果 -->
         <div id='loading'>
-            <!-- <span class="l-btn-icon pagination-load">&nbsp;</span> -->
             <div style="width: 15px;height: 15px;margin: 200px auto;">
-                <image src='./src/img/loading.gif'/>
+                <image src='../img/loading.gif'/>
                 <font color="#fff" size="4">页面正在加载中···</font>
             </div>
         </div>
-        <div class="easyui-window" title="Basic layout" data-options="fit:true">
+        <!-- 主页面 -->
+        <div id="win" class="easyui-window" title="Basic layout" data-options="fit:true">
                 <div class="container">
                         <div class="easyui-layout full-layout" data-options="fit:true">
                             <!-- 头部menu -->
                             <div data-options="region:'north'" style="height:34px">
-                                <div class="easyui-panel" style="padding:0 10px;">
-                                    <!-- <a href="#" class="easyui-linkbutton" data-options="plain:true">Home</a>
-                                    <a href="#" class="easyui-linkbutton" data-options="plain:true">Edit</a>
-                                    <a href="#" class="easyui-linkbutton" data-options="plain:true">Help</a>
-                                    <a href="#" class="easyui-menubutton">About</a> -->
+                                <div class="menu-panel easyui-panel" style="padding:0 10px;">
                                 </div>
                             </div>
                             <!-- 左侧二级菜单 -->
-                            <div class="west" data-options="region:'west',split:true" title="二级菜单" style="width:120px;">
+                            <div id="west" data-options="region:'west',split:true" title="二级菜单" style="width:120px;">
                                 <!-- <div id="sm" class="easyui-sidemenu" data-options="data:data"></div> -->
                             </div>
                             <!-- 中间内容展示 -->
@@ -63,49 +59,16 @@
                         </div>
                     </div>
         </div>
+        <a href="#" style="position:fixed;bottom:20px;left:20px;" class="easyui-linkbutton l-btn l-btn-small" onclick="javascript:$('#win').window('open')">
+            <span class="l-btn-left">
+                <span class="l-btn-text">Open</span>
+            </span>
+        </a>
 
     <script type="text/javascript" src="./dist/easyui/jquery.min.js">
     </script>
     <script type="text/javascript" src="./dist/easyui/jquery.easyui.min.js">
     </script>
     <script type="text/javascript" src="./index.js"></script>
-    <script>
-        // 展示
-        // var data = [{
-        //     text: 'Item1',
-        //     iconCls: 'icon-sum',
-        //     state: 'open',
-        //     children: [{
-        //         text: 'Option1'
-        //     },{
-        //         text: 'Option2'
-        //     },{
-        //         text: 'Option3',
-        //         children: [{
-        //             text: 'Option31'
-        //         },{
-        //             text: 'Option32'
-        //         }]
-        //     }]
-        // },{
-        //     text: 'Item2',
-        //     iconCls: 'icon-more',
-        //     children: [{
-        //         text: 'Option4'
-        //     },{
-        //         text: 'Option5'
-        //     },{
-        //         text: 'Option6'
-        //     }]
-        // }];
-        // console.log(curData);
-        // function setLayoutHeight() {
-        //     var height = $(window).height() - 20;
-        //     $(".full-layout").attr("style", "width:100%;height:" + height + "px");
-        //     $(".full-layout").layout("resize");
-        //     console.log($(".full-layout").css('height'));
-        // }
-        // setLayoutHeight();
-    </script>
 </body>
 </html>
