@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
 	<head>
 		<meta charset="utf-8">
@@ -7,12 +7,16 @@
 	    <link rel="icon" href="data:;base64,=">
 	    <title>DataGrid</title>
 	    <link rel="stylesheet" type="text/css" href="../dist/easyui/themes/default/easyui.css">
-	    <link rel="stylesheet" type="text/css" href="../dist/easyui/themes/icon.css">
-	</head>
+		<link rel="stylesheet" type="text/css" href="../dist/easyui/themes/icon.css">
+		<script type="text/javascript" src="../dist/easyui/jquery.min.js">
+		</script>
+		<script type="text/javascript" src="../dist/easyui/jquery.easyui.min.js">
+		</script>
+	</head> -->
 	<body>
 	<h2>Basic DataGrid</h2>
     <table class="baseData easyui-datagrid" title="Basic DataGrid" style="width:700px;height:250px" fit='true' fitColumns='true'
-            data-options="singleSelect:'true',collapsible:true,url:'../src/data/data1.json',method:'get',pagination:'true',rownumbers:'true',toolbar: '#tb'">
+            data-options="singleSelect:'true',collapsible:true,url:'src/data/data1.json',method:'get',pagination:'true',rownumbers:'true',toolbar: '#grid-tb'">
         <thead>
             <tr>
                 <th data-options="field:'itemid',width:100">Item ID</th>
@@ -23,11 +27,13 @@
                 <th data-options="field:'status',width:100,align:'center'">Status</th>
             </tr>
         </thead>
-    </table>
-	<div id="tb">
+	</table>
+	<!-- 工具按钮 -->
+	<div id="grid-tb">
 		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick='newUser()'>添加</a>
 		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',plain:true" onclick="del()">删除</a>
 	</div>
+	<!-- 添加新数据弹出框 -->
 	<div id="dlg" class="easyui-dialog" style="width:400px" data-options="closed:true,modal:true,border:'thin',buttons:'#dlg-buttons'">
         <form id="fm" method="post" novalidate style="margin:0;padding:20px 50px">
             <h3>Data Information</h3>
@@ -52,14 +58,10 @@
         </form>
     </div>
 
-	<script type="text/javascript" src="../dist/easyui/jquery.min.js">
-    </script>
-    <script type="text/javascript" src="../dist/easyui/jquery.easyui.min.js">
-    </script>
 	<script type="text/javascript">
-		function imgFormat(url) {
-			return '<img alt="没有图片" src="'+url+'"/>'
-		}
+		// function imgFormat(url) {
+		// 	return '<img alt="没有图片" src="'+url+'"/>'
+		// }
 
 		//  需要三个参数，1是当前格子的数据，2是当前格子对应的整行数据，3是当前页的索引
 		function selFormat(price) {
@@ -85,8 +87,8 @@
 		function newUser(){
             $('#dlg').dialog('open').dialog('center').dialog('setTitle','New Data');
             $('#fm').form('clear');
-            url = 'save_user.php';
+            // url = 'save_user.php';
         }
 	</script>
 	</body>
-</html>
+<!-- </html> -->
