@@ -1,0 +1,94 @@
+<!-- <!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	    <link rel="icon" href="data:;base64,=">
+	    <title>DataGrid</title>
+	    <link rel="stylesheet" type="text/css" href="../dist/easyui/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="../dist/easyui/themes/icon.css">
+		<script type="text/javascript" src="../dist/easyui/jquery.min.js">
+		</script>
+		<script type="text/javascript" src="../dist/easyui/jquery.easyui.min.js">
+		</script>
+	</head> -->
+	<body>
+	<h2>Basic DataGrid</h2>
+    <table class="baseData easyui-datagrid" title="Basic DataGrid" style="width:700px;height:250px" fit='true' fitColumns='true'
+            data-options="singleSelect:'true',collapsible:true,url:'src/data/data1.json',method:'get',pagination:'true',rownumbers:'true',toolbar: '#grid-tb'">
+        <thead>
+            <tr>
+                <th data-options="field:'itemid',width:100">Item ID</th>
+                <th data-options="field:'productid',width:100">Product</th>
+                <th data-options="field:'listprice',width:100,align:'right',formatter:selFormat">List Price</th>
+                <th data-options="field:'unitcost',width:100,align:'right'">Unit Cost</th>
+                <th data-options="field:'attr1',width:250">Attribute</th>
+                <th data-options="field:'status',width:100,align:'center'">Status</th>
+            </tr>
+        </thead>
+	</table>
+	<!-- 工具按钮 -->
+	<div id="grid-tb">
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick='newUser()'>添加</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',plain:true" onclick="del()">删除</a>
+	</div>
+	<!-- 添加新数据弹出框 -->
+	<div id="dlg" class="easyui-dialog" style="width:400px" data-options="closed:true,modal:true,border:'thin',buttons:'#dlg-buttons'">
+        <form id="fm" method="post" novalidate style="margin:0;padding:20px 50px">
+            <h3>Data Information</h3>
+            <div style="margin-bottom:10px">
+                <input name="itemid" class="easyui-textbox" required="true" label="itemid:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="productid" class="easyui-textbox" required="true" label="productid:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="listprice" class="easyui-textbox" required="true" label="listprice:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="unitcost" class="easyui-textbox" required="true" validType="email" label="unitcost:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="attr1" class="easyui-textbox" required="true" validType="email" label="attr1:" style="width:100%">
+            </div>
+            <div style="margin-bottom:10px">
+                <input name="status" class="easyui-textbox" required="true" validType="email" label="status:" style="width:100%">
+            </div>
+        </form>
+    </div>
+
+	<script type="text/javascript">
+		// function imgFormat(url) {
+		// 	return '<img alt="没有图片" src="'+url+'"/>'
+		// }
+
+		//  需要三个参数，1是当前格子的数据，2是当前格子对应的整行数据，3是当前页的索引
+		function selFormat(price) {
+			if(Number(price)< 30) {
+				return '<span style="color:red;">'+price+'</span>'
+			}
+			return price;
+		}
+		function del() {
+			// 返回第一个选中行的数据
+			var delRow = $('.baseData').datagrid('getSelected');
+			if(!delRow) {
+				$.messager.alert('Warning','请先选中一行！！！');
+				return;
+			}
+			console.log(delRow);
+			// 刷新时保持在当前页
+			// 这里应当通过 ajax 将删除行的 id 发送给数据库，在数据库中进行删除
+			$('.baseData').datagrid('reload');
+			$.messager.alert('Warning','已删除！！！');
+		}
+
+		function newUser(){
+            $('#dlg').dialog('open').dialog('center').dialog('setTitle','New Data');
+            $('#fm').form('clear');
+            // url = 'save_user.php';
+        }
+	</script>
+	</body>
+<!-- </html> -->
