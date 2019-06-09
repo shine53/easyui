@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript" src="./dist/easyui/jquery.min.js">
+	    </script>
+		<script type="text/javascript">
+			console.log($);
+
+			$.ajax({
+			     url:'https://yijianshangbao.yinshuiyu.com/taizhang/xianchang/get_xianchangguanli_list/sanchangsuo?user_id=1&page=0&per_page=22&jh_year=2019&company_id=1',
+			     dataType:'jsonp',
+			     // processData: false,
+			     type:'get',
+				 jsonp: 'jsonpCallback',
+
+				 contentType: 'application/json;charset=utf-8',
+			     success:function(data){
+					// data = JSON.parse(data);
+			       console.log(data);
+			     },
+			     error:function(XMLHttpRequest, textStatus, errorThrown) {
+			       console.log(XMLHttpRequest.status);
+			       console.log(XMLHttpRequest.readyState);
+			       console.log(textStatus);
+			     }
+			 });
+
+		</script>
+	</body>
+</html>

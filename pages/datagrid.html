@@ -31,6 +31,7 @@
 	<!-- 工具按钮 -->
 	<div id="grid-tb">
 		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick='newUser()'>添加</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick='editUser()'>编辑</a>
 		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',plain:true" onclick="del()">删除</a>
 	</div>
 	<!-- 添加新数据弹出框 -->
@@ -38,7 +39,8 @@
         <form id="fm" method="post" novalidate style="margin:0;padding:20px 50px">
             <h3>Data Information</h3>
             <div style="margin-bottom:10px">
-                <input name="itemid" class="easyui-textbox" required="true" label="itemid:" style="width:100%">
+				<label for="itemid" style="display: inline-block;width: 80px;">itemid：</label>
+                <input name="itemid" class="easyui-validatebox" required="true" label="itemid:" style="width:70%;height:28px;line-height: 28px;border-radius:5px;outline:none;padding:0 4px;">
             </div>
             <div style="margin-bottom:10px">
                 <input name="productid" class="easyui-textbox" required="true" label="productid:" style="width:100%">
@@ -57,7 +59,10 @@
             </div>
         </form>
     </div>
-
+	<div id="dlg-buttons">
+        <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveUser()" style="width:90px">Save</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
+    </div>
 	<script type="text/javascript">
 		// function imgFormat(url) {
 		// 	return '<img alt="没有图片" src="'+url+'"/>'
@@ -84,11 +89,15 @@
 			$.messager.alert('Warning','已删除！！！');
 		}
 
-		function newUser(){
+		function newUser() {
             $('#dlg').dialog('open').dialog('center').dialog('setTitle','New Data');
             $('#fm').form('clear');
             // url = 'save_user.php';
         }
+		function editUser() {
+			$('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit Data');
+            $('#fm').form('clear');
+		}
 	</script>
 	</body>
 <!-- </html> -->
